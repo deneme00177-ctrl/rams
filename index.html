@@ -1554,17 +1554,17 @@ function validateForm() {
         productsArray.push(p);
       });
 
-      productsArray.sort((a, b) => {
+productsArray.sort((a, b) => {
         const dateA = a.eklenmeTarihi ? a.eklenmeTarihi.toDate() : new Date(0);
         const dateB = b.eklenmeTarihi ? b.eklenmeTarihi.toDate() : new Date(0);
-        return dateA - dateB;
+        return dateB - dateA;
       });
 
       productsArray.forEach((p) => {
         allProducts.push(p);
         
         let variantBoxes = (p.varyantlar || []).map(v => `
-          <div role="button" onclick="event.stopPropagation(); window.addToCart('${p.id}', '${v}')" class="variant-box">
+          <div onclick="event.stopPropagation(); window.addToCart('${p.id}', '${v}')" class="variant-box">
             ${v}
           </div>
         `).join('');
